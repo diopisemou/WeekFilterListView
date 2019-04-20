@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomListView.Views.ItemTodo.ItemsTodoPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding ItemsTodo}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Text}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                            <Label Text="{Binding Description}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="PrevItems" Text="Previous Week" Command="{Binding PrevWeekCommand}"></Button>
+            <StackLayout>
+                <Label Text="Week "></Label>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Binding WeekTimeLine}" FontSize="15"></Label>
+            </StackLayout>
+            <Button x:Name="NextItems" Text="Next Week" Command="{Binding NextWeekCommand}"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Go To Date "></Label>
+            <DatePicker Date="{Binding SelectedDateTimeLine}"></DatePicker>
+            <Button x:Name="WeekFromDayItems" Text="Next Week" Command="{Binding WeekFromDayCommand}"></Button>
+        </StackLayout>
+    </StackLayout>
+    
+</ContentPage>

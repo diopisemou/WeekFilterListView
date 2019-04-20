@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceAssemblyReference>true</ProduceAssemblyReference>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\ItemTodo\ItemTodoDetailPage.xaml.cs">
+      <DependentUpon>ItemTodoDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ItemTodo\ItemsTodoPage.xaml.cs">
+      <DependentUpon>ItemsTodoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ItemTodo\NewItemTodoPage.xaml.cs">
+      <DependentUpon>NewItemTodoPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
