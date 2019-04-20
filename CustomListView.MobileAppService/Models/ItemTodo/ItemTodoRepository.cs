@@ -32,9 +32,9 @@ namespace CustomListView.Models.ItemTodo
             items[item.Id] = item;
         }
 
-        public Item Find(string id)
+        public ItemTodo Find(string id)
         {
-            Item item;
+            ItemTodo item;
             items.TryGetValue(id, out item);
 
             return item;

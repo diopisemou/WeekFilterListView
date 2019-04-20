@@ -12,7 +12,7 @@ namespace CustomListView.Controllers
 
         private readonly IItemTodoRepository ItemRepository;
 
-        public ItemController(IItemTodoRepository itemRepository)
+        public ItemTodoController(IItemTodoRepository itemRepository)
         {
             ItemRepository = itemRepository;
         }

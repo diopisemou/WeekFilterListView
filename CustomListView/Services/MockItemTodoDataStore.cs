@@ -77,20 +77,24 @@ namespace CustomListView.Services
             double TimeLineDate = (double)timeline.DayOfYear ;
             double TimeLineDateNum = TimeLineDate / weeksnum;
             double TimeLineDateEndNum = ((TimeLineDate - 7)) / weeksnum;
-            List<ItemTodo> result = new List<ItemTodo>();
-            foreach (var item in items)
-            {
-                if (item.IsDone == false)
-                {
+            
+            //List<ItemTodo> result = new List<ItemTodo>();
+            //foreach (var item in items)
+            //{
+            //    if (item.IsDone == false)
+            //    {
                     
-                    bool dutedatecheck = ((double)item.DueDate.DayOfYear / weeksnum >= TimeLineDateEndNum) && ((double)item.DueDate.DayOfYear / weeksnum <= TimeLineDateNum) ;
-                    if (dutedatecheck)
-                    {
-                        result.Add(item);
-                    }
-                }
-            }
-            return await Task.FromResult(result);
+            //        bool dutedatecheck = ((double)item.DueDate.DayOfYear / weeksnum >= TimeLineDateEndNum) && ((double)item.DueDate.DayOfYear / weeksnum <= TimeLineDateNum) ;
+            //        if (dutedatecheck)
+            //        {
+            //            result.Add(item);
+            //        }
+            //    }
+            //}
+
+            return await Task.FromResult(items.Where(item => ((double)item.DueDate.DayOfYear / weeksnum >= TimeLineDateEndNum) && ((double)item.DueDate.DayOfYear / weeksnum <= TimeLineDateNum) && item.IsDone == false));
+
+            //return await Task.FromResult(result);
             //yorslcr80j
         }
     }
